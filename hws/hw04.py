@@ -29,9 +29,9 @@ def get_upcoming_birthdays(users: list[dict[str, str]], days: int = 7) -> list[d
                     except Exception:
                         birthday_year = birthday.replace(year=year, month=3, day=1)
 
-                    bday = birthday_year + timedelta(
-                        days=7 - birthday_year.weekday()) if birthday_year.weekday() >= 5 else birthday_year
-                    if bday >= today and 0 <= (bday - today).days < days:
+                    if birthday_year >= today and 0 <= (birthday_year - today).days < days:
+                        bday = birthday_year + timedelta(
+                            days=7 - birthday_year.weekday()) if birthday_year.weekday() >= 5 else birthday_year
                         res.append({
                             'name': parse_value(user['name'], str, 'name'),
                             'congratulation_date': bday.strftime('%Y.%m.%d'),
