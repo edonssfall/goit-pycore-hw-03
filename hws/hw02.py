@@ -25,7 +25,7 @@ def get_numbers_ticket(min: int, max: int, quantity: int) -> list:
             raise Exception(f'{max} > 1000')
         if min > max:
             raise Exception(f'{min} > {max}')
-        if not min < quantity < max:
+        if not min <= quantity <= max:
             raise Exception(f'quantity must be between min and max - {min} < {quantity} < {max}')
         if quantity - 1 > (max - min):
             raise Exception(f'{quantity} > {(max - min)} - not enough variants')
